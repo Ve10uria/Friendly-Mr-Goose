@@ -238,7 +238,7 @@ game.onUpdateInterval(5000, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, Enemy6, 0, 20)
+        `, Enemy6, -20, 0)
 })
 forever(function () {
     if (mr_goose.overlapsWith(myEnemy)) {
