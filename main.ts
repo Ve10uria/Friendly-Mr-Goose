@@ -3,7 +3,6 @@ enum ActionKind {
     Idle,
     Jumping
 }
-let dog: Sprite = null
 tiles.setTilemap(tiles.createTilemap(hex`1000100002010101010104010304020202020402020302020203040102040202020204020202030302020102010402020404040203020202020202030204020202020402040404040404040102040201010104040202030101010202020404040102020102020202020202020202020403020202010202020202030101020304040402030404040404040403030202020202020302020202020204020202010303020203010301030101040202030202040101010203030203010203010102020404040402020202020202020203020302020202020302020103040404040402020302010202030202020302020104020203020202020202020202020302040202020202`, img`
     . . . . . . 2 . . 2 . . . . 2 . 
     . . . . . . 2 . . 2 . . . . 2 . 
@@ -179,6 +178,24 @@ let Enemy7 = sprites.create(img`
     . . . f f . . f f . . . . 
     `, SpriteKind.Enemy)
 Enemy7.setPosition(240, 240)
+let dog = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Enemy)
 forever(function () {
     if (mr_goose.overlapsWith(myEnemy)) {
         if (controller.A.isPressed()) {
@@ -243,7 +260,7 @@ forever(function () {
             info.changeScoreBy(1)
         }
     }
-    if (info.score() == 5) {
+    if (info.score() == 3) {
         for (let index = 0; index < 1; index++) {
             dog = sprites.create(img`
                 . . . e e . . . . e e . . . . . 
@@ -261,11 +278,10 @@ forever(function () {
                 . . . 8 8 8 8 8 8 8 8 8 8 . . . 
                 . . . e e . . e e . . e e . . . 
                 `, SpriteKind.Enemy)
-            dog.setPosition(50, 50)
-            dog.follow(mr_goose, 10)
+            dog.follow(mr_goose, 30)
         }
-        if (mr_goose.overlapsWith(dog)) {
-            info.changeLifeBy(-1)
-        }
+    }
+    if (dog.overlapsWith(mr_goose)) {
+        info.changeLifeBy(-1)
     }
 })
