@@ -3,12 +3,63 @@ enum ActionKind {
     Idle,
     Jumping
 }
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    animation.runImageAnimation(
+    mr_goose,
+    [img`
+        . . f f f . . . . . . . . . . . 
+        . . f 1 f . . . . . . . . . . . 
+        f f f 1 f . . . . . . . . . . . 
+        . . . f f . . . . . . . . . . . 
+        . . . f f . . . . . . . . . . . 
+        . . . f f . . . . . . . . . . . 
+        . . . f f . . . . . . . . . . . 
+        . . . d d e e e e e e e e . . . 
+        . . d d d d e e e e e e e e e e 
+        . . d d d d d e e e e e e e e . 
+        . . d d d d d d d d d d d 1 1 . 
+        . . . d d d d d d d d d 1 1 . . 
+        . . . . . f . . f . . . . . . . 
+        . . . . . f . . f . . . . . . . 
+        . . . . . f . . f . . . . . . . 
+        . . . . f f . f f . . . . . . . 
+        `],
+    500,
+    true
+    )
+})
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    animation.runImageAnimation(
+    mr_goose,
+    [img`
+        . . . . . . . . . . . f f f . . 
+        . . . . . . . . . . . f 1 f . . 
+        . . . . . . . . . . . f 1 f f f 
+        . . . . . . . . . . . f f . . . 
+        . . . . . . . . . . . f f . . . 
+        . . . . . . . . . . . f f . . . 
+        . . . . . . . . . . . f f . . . 
+        . . . . e e e e e e e d d . . . 
+        e e e e e e e e e e d d d d . . 
+        . e e e e e e e e d d d d d . . 
+        . . 1 1 d d d d d d d d d d . . 
+        . . . 1 1 d d d d d d d d . . . 
+        . . . . . . . f . . f . . . . . 
+        . . . . . . . f . . f . . . . . 
+        . . . . . . . f . . f . . . . . 
+        . . . . . . . f f . f f . . . . 
+        `],
+    500,
+    true
+    )
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     pause(2000)
 })
 let projectile2: Sprite = null
 let projectile: Sprite = null
+let mr_goose: Sprite = null
 tiles.setTilemap(tiles.createTilemap(hex`1000100002010101010104010304020202020402020302020203040102040202020204020202030302020102010402020404040203020202020202030204020202020402040404040404040102040201010104040202030101010202020404040102020102020202020202020202020403020202010202020202030101020304040402030404040404040403030202020202020302020202020204020202010303020203010301030101040202030202040101010203030203010203010102020404040402020202020202020203020302020202020302020103040404040402020302010202030202020302020104020203020202020202020202020302040202020202`, img`
     . . . . . . 2 . . 2 . . . . 2 . 
     . . . . . . 2 . . 2 . . . . 2 . 
@@ -29,23 +80,23 @@ tiles.setTilemap(tiles.createTilemap(hex`100010000201010101010401030402020202040
     `, [myTiles.transparency16,sprites.castle.tileGrass3,sprites.castle.tileGrass1,sprites.castle.tileGrass2,sprites.builtin.brick], TileScale.Sixteen))
 info.startCountdown(60)
 info.setScore(0)
-let mr_goose = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
+mr_goose = sprites.create(img`
     . . . . . . . . . . . f f f . . 
     . . . . . . . . . . . f 1 f . . 
-    . . . . . . . . . . . f 1 f f . 
+    . . . . . . . . . . . f 1 f f f 
     . . . . . . . . . . . f f . . . 
     . . . . . . . . . . . f f . . . 
-    . . . . . . . e e e e d f . . . 
-    . . . . e e e e e e e d d d . . 
-    . . 1 e e e e e e e d d d d . . 
-    . . . 1 1 e e e e d d d d d . . 
-    . . . . . 1 d d d d d d . . . . 
+    . . . . . . . . . . . f f . . . 
+    . . . . . . . . . . . f f . . . 
+    . . . . e e e e e e e d d . . . 
+    e e e e e e e e e e d d d d . . 
+    . e e e e e e e e d d d d d . . 
+    . . 1 1 d d d d d d d d d d . . 
+    . . . 1 1 d d d d d d d d . . . 
+    . . . . . . . f . . f . . . . . 
     . . . . . . . f . . f . . . . . 
     . . . . . . . f . . f . . . . . 
     . . . . . . . f f . f f . . . . 
-    . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
 scene.cameraFollowSprite(mr_goose)
 controller.moveSprite(mr_goose, 50, 50)

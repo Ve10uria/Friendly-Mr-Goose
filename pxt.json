@@ -3,7 +3,8 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "animation": "*"
+        "animation": "*",
+        "pxt-circuit-playground-character-icons": "github:adafruit/circuit-playground-character-icons#v0.0.8"
     },
     "files": [
         "main.blocks",
