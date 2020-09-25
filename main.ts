@@ -21,7 +21,8 @@ tiles.setTilemap(tiles.createTilemap(hex`100010000201010101010401030402020202040
     . . . . . . . . . . 2 . . . . . 
     . . . . . . . . . . 2 . . . . . 
     `, [myTiles.transparency16,sprites.castle.tileGrass3,sprites.castle.tileGrass1,sprites.castle.tileGrass2,sprites.builtin.brick], TileScale.Sixteen))
-info.startCountdown(30)
+info.startCountdown(60)
+info.setScore(0)
 let mr_goose = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -181,11 +182,13 @@ forever(function () {
     if (mr_goose.overlapsWith(myEnemy)) {
         if (controller.A.isPressed()) {
             myEnemy.destroy(effects.spray, 500)
+            info.changeScoreBy(1)
         }
     }
     if (mr_goose.overlapsWith(Enemy2)) {
         if (controller.A.isPressed()) {
             Enemy2.destroy(effects.spray, 500)
+            info.changeScoreBy(1)
         }
     }
     if (mr_goose.overlapsWith(Enemy3)) {
@@ -196,21 +199,25 @@ forever(function () {
     if (mr_goose.overlapsWith(Enemy4)) {
         if (controller.A.isPressed()) {
             Enemy4.destroy(effects.spray, 500)
+            info.changeScoreBy(1)
         }
     }
     if (mr_goose.overlapsWith(Enemy5)) {
         if (controller.A.isPressed()) {
             Enemy5.destroy(effects.spray, 500)
+            info.changeScoreBy(1)
         }
     }
     if (mr_goose.overlapsWith(Enemy6)) {
         if (controller.A.isPressed()) {
             Enemy6.destroy(effects.spray, 500)
+            info.changeScoreBy(1)
         }
     }
     if (mr_goose.overlapsWith(Enemy7)) {
         if (controller.A.isPressed()) {
             Enemy7.destroy(effects.spray, 500)
+            info.changeScoreBy(1)
         }
     }
 })
