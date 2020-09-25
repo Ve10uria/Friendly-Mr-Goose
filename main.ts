@@ -3,6 +3,9 @@ enum ActionKind {
     Idle,
     Jumping
 }
+namespace SpriteKind {
+    export const Victim = SpriteKind.create()
+}
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     mr_goose,
@@ -56,6 +59,9 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     pause(2000)
+})
+sprites.onDestroyed(SpriteKind.Enemy, function (sprite) {
+    music.pewPew.play()
 })
 let projectile2: Sprite = null
 let projectile: Sprite = null
@@ -119,7 +125,7 @@ let myEnemy = sprites.create(img`
     e e f 6 6 6 6 6 6 f e e . 
     . . . f f f f f f . . . . 
     . . . f f . . f f . . . . 
-    `, SpriteKind.Enemy)
+    `, SpriteKind.Victim)
 myEnemy.setPosition(80, 45)
 let Enemy2 = sprites.create(img`
     . f f f . f f f f . f f f . 
@@ -138,7 +144,7 @@ let Enemy2 = sprites.create(img`
     . d d f 6 6 6 6 6 6 f d d . 
     . . . . f f f f f f . . . . 
     . . . . f f . . f f . . . . 
-    `, SpriteKind.Enemy)
+    `, SpriteKind.Victim)
 Enemy2.setPosition(22, 19)
 let Enemy3 = sprites.create(img`
     . . . . 5 5 5 5 . . . . . 
@@ -157,7 +163,7 @@ let Enemy3 = sprites.create(img`
     b b f 6 6 6 6 6 6 f b b . 
     . . . f f f f f f . . . . 
     . . . f f . . f f . . . . 
-    `, SpriteKind.Enemy)
+    `, SpriteKind.Victim)
 Enemy3.setPosition(20, 200)
 let Enemy4 = sprites.create(img`
     . . . . 9 9 9 9 . . . . . 
@@ -176,7 +182,7 @@ let Enemy4 = sprites.create(img`
     e e f 6 6 6 6 6 6 f e e . 
     . . 9 f f f f f f 9 . . . 
     . . . f f . . f f . . . . 
-    `, SpriteKind.Enemy)
+    `, SpriteKind.Victim)
 Enemy4.setPosition(100, 190)
 let Enemy5 = sprites.create(img`
     . . . . 4 4 4 4 . . . . . 
@@ -195,7 +201,7 @@ let Enemy5 = sprites.create(img`
     d d f 8 8 8 8 8 8 f d d . 
     . . . f f f f f f . . . . 
     . . . f f . . f f . . . . 
-    `, SpriteKind.Enemy)
+    `, SpriteKind.Victim)
 Enemy5.setPosition(140, 240)
 let Enemy6 = sprites.create(img`
     . . . . f f f f . . . . . 
@@ -214,7 +220,7 @@ let Enemy6 = sprites.create(img`
     d d f 2 2 2 2 2 2 f d d . 
     . . . f f f f f f . . . . 
     . . . f f . . f f . . . . 
-    `, SpriteKind.Enemy)
+    `, SpriteKind.Victim)
 Enemy6.setPosition(200, 17)
 let Enemy7 = sprites.create(img`
     . . . . e e e e . . . . . 
@@ -233,7 +239,7 @@ let Enemy7 = sprites.create(img`
     d d f 6 6 6 6 6 6 f d d . 
     . . . f f f f f f . . . . 
     . . . f f . . f f . . . . 
-    `, SpriteKind.Enemy)
+    `, SpriteKind.Victim)
 Enemy7.setPosition(240, 240)
 let dog = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -252,7 +258,7 @@ let dog = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Enemy)
+    `, SpriteKind.Victim)
 game.onUpdateInterval(5000, function () {
     projectile = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
