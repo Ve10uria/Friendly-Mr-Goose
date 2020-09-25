@@ -1,3 +1,8 @@
+enum ActionKind {
+    Walking,
+    Idle,
+    Jumping
+}
 tiles.setTilemap(tiles.createTilemap(hex`1000100002010101010104010304020202020402020302020203040102040202020204020202030302020102010402020404040203020202020202030204020202020402040404040404040102040201010104040202030101010202020404040102020102020202020202020202020403020202010202020202030101020304040402030404040404040403030202020202020302020202020204020202010303020203010301030101040202030202040101010203030203010203010102020404040402020202020202020203020302020202020302020103040404040402020302010202030202020302020104020203020202020202020202020302040202020202`, img`
     . . . . . . 2 . . 2 . . . . 2 . 
     . . . . . . 2 . . 2 . . . . 2 . 
@@ -16,7 +21,8 @@ tiles.setTilemap(tiles.createTilemap(hex`100010000201010101010401030402020202040
     . . . . . . . . . . 2 . . . . . 
     . . . . . . . . . . 2 . . . . . 
     `, [myTiles.transparency16,sprites.castle.tileGrass3,sprites.castle.tileGrass1,sprites.castle.tileGrass2,sprites.builtin.brick], TileScale.Sixteen))
-let mySprite = sprites.create(img`
+info.startCountdown(30)
+let mr_goose = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . f f f . . 
@@ -34,9 +40,10 @@ let mySprite = sprites.create(img`
     . . . . . . . f f . f f . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
-scene.cameraFollowSprite(mySprite)
-controller.moveSprite(mySprite, 50, 50)
-mySprite.setPosition(14, 115)
+scene.cameraFollowSprite(mr_goose)
+controller.moveSprite(mr_goose, 50, 50)
+mr_goose.setPosition(14, 115)
+info.setLife(3)
 let myEnemy = sprites.create(img`
     . . . . f f f f . . . . . 
     . . f f f f f f f f . . . 
@@ -171,37 +178,37 @@ let Enemy7 = sprites.create(img`
     `, SpriteKind.Player)
 Enemy7.setPosition(240, 240)
 forever(function () {
-    if (mySprite.overlapsWith(myEnemy)) {
+    if (mr_goose.overlapsWith(myEnemy)) {
         if (controller.A.isPressed()) {
             myEnemy.destroy(effects.spray, 500)
         }
     }
-    if (mySprite.overlapsWith(Enemy2)) {
+    if (mr_goose.overlapsWith(Enemy2)) {
         if (controller.A.isPressed()) {
             Enemy2.destroy(effects.spray, 500)
         }
     }
-    if (mySprite.overlapsWith(Enemy3)) {
+    if (mr_goose.overlapsWith(Enemy3)) {
         if (controller.A.isPressed()) {
             Enemy3.destroy(effects.spray, 500)
         }
     }
-    if (mySprite.overlapsWith(Enemy4)) {
+    if (mr_goose.overlapsWith(Enemy4)) {
         if (controller.A.isPressed()) {
             Enemy4.destroy(effects.spray, 500)
         }
     }
-    if (mySprite.overlapsWith(Enemy5)) {
+    if (mr_goose.overlapsWith(Enemy5)) {
         if (controller.A.isPressed()) {
             Enemy5.destroy(effects.spray, 500)
         }
     }
-    if (mySprite.overlapsWith(Enemy6)) {
+    if (mr_goose.overlapsWith(Enemy6)) {
         if (controller.A.isPressed()) {
             Enemy6.destroy(effects.spray, 500)
         }
     }
-    if (mySprite.overlapsWith(Enemy7)) {
+    if (mr_goose.overlapsWith(Enemy7)) {
         if (controller.A.isPressed()) {
             Enemy7.destroy(effects.spray, 500)
         }
