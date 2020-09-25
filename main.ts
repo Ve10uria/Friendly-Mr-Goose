@@ -260,28 +260,34 @@ forever(function () {
             info.changeScoreBy(1)
         }
     }
-    if (info.score() == 3) {
-        for (let index = 0; index < 1; index++) {
-            dog = sprites.create(img`
-                . . . e e . . . . e e . . . . . 
-                . . e e e 8 8 8 8 e e e . . . . 
-                . . e e 8 5 5 5 5 8 e e . . . . 
-                . . 8 8 8 8 8 8 8 8 8 8 . . . . 
-                . . e e e e e e e e e e . . . . 
-                . . e e e e e e e e e e . . . . 
-                . . e e f e e e e f e e . . . . 
-                . . e e e e f f e e e e . . e e 
-                . . e e e e e e e e e e . e e e 
-                . . . 8 8 8 5 5 8 8 8 8 8 e e e 
-                . . . 8 8 8 8 8 8 8 8 8 8 e e . 
-                . . . 8 8 8 8 8 8 8 8 8 8 e . . 
-                . . . 8 8 8 8 8 8 8 8 8 8 . . . 
-                . . . e e . . e e . . e e . . . 
-                `, SpriteKind.Enemy)
-            dog.follow(mr_goose, 30)
-        }
-    }
     if (dog.overlapsWith(mr_goose)) {
         info.changeLifeBy(-1)
+        pause(2000)
+    }
+})
+forever(function () {
+    if (info.score() == 7) {
+        game.over(true, effects.confetti)
+    }
+})
+game.onUpdateInterval(30000, function () {
+    if (game.runtime() >= 30) {
+        dog = sprites.create(img`
+            . . . e e . . . . e e . . . . . 
+            . . e e e 8 8 8 8 e e e . . . . 
+            . . e e 8 5 5 5 5 8 e e . . . . 
+            . . 8 8 8 8 8 8 8 8 8 8 . . . . 
+            . . e e e e e e e e e e . . . . 
+            . . e e e e e e e e e e . . . . 
+            . . e e f e e e e f e e . . . . 
+            . . e e e e f f e e e e . . e e 
+            . . e e e e e e e e e e . e e e 
+            . . . 8 8 8 5 5 8 8 8 8 8 e e e 
+            . . . 8 8 8 8 8 8 8 8 8 8 e e . 
+            . . . 8 8 8 8 8 8 8 8 8 8 e . . 
+            . . . 8 8 8 8 8 8 8 8 8 8 . . . 
+            . . . e e . . e e . . e e . . . 
+            `, SpriteKind.Enemy)
+        dog.follow(mr_goose, 20)
     }
 })
