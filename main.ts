@@ -183,22 +183,35 @@ forever(function () {
         if (controller.A.isPressed()) {
             myEnemy.destroy(effects.spray, 500)
             info.changeScoreBy(1)
+        } else if (controller.B.isPressed()) {
+            myEnemy.destroy(effects.rings, 500)
+            info.changeScoreBy(1)
         }
     }
     if (mr_goose.overlapsWith(Enemy2)) {
         if (controller.A.isPressed()) {
-            Enemy2.destroy(effects.spray, 500)
+            Enemy2.destroy(effects.fire, 500)
+            info.changeScoreBy(1)
+        } else if (controller.B.isPressed()) {
+            Enemy2.destroy(effects.rings, 500)
             info.changeScoreBy(1)
         }
     }
     if (mr_goose.overlapsWith(Enemy3)) {
         if (controller.A.isPressed()) {
             Enemy3.destroy(effects.spray, 500)
+            info.changeScoreBy(1)
+        } else if (controller.B.isPressed()) {
+            Enemy3.destroy(effects.rings, 500)
+            info.changeScoreBy(1)
         }
     }
     if (mr_goose.overlapsWith(Enemy4)) {
         if (controller.A.isPressed()) {
             Enemy4.destroy(effects.spray, 500)
+            info.changeScoreBy(1)
+        } else if (controller.B.isPressed()) {
+            Enemy4.destroy(effects.rings, 500)
             info.changeScoreBy(1)
         }
     }
@@ -206,17 +219,26 @@ forever(function () {
         if (controller.A.isPressed()) {
             Enemy5.destroy(effects.spray, 500)
             info.changeScoreBy(1)
+        } else if (controller.B.isPressed()) {
+            Enemy5.destroy(effects.rings, 500)
+            info.changeScoreBy(1)
         }
     }
     if (mr_goose.overlapsWith(Enemy6)) {
         if (controller.A.isPressed()) {
             Enemy6.destroy(effects.spray, 500)
             info.changeScoreBy(1)
+        } else if (controller.B.isPressed()) {
+            Enemy6.destroy(effects.rings, 500)
+            info.changeScoreBy(1)
         }
     }
     if (mr_goose.overlapsWith(Enemy7)) {
         if (controller.A.isPressed()) {
             Enemy7.destroy(effects.spray, 500)
+            info.changeScoreBy(1)
+        } else if (controller.B.isPressed()) {
+            Enemy7.destroy(effects.rings, 500)
             info.changeScoreBy(1)
         }
     }
