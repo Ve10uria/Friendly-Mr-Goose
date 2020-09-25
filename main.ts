@@ -176,7 +176,34 @@ forever(function () {
             myEnemy.destroy(effects.spray, 500)
         }
     }
-    if (true) {
-    	
+    if (mySprite.overlapsWith(Enemy2)) {
+        if (controller.A.isPressed()) {
+            Enemy2.destroy(effects.spray, 500)
+        }
+    }
+    if (mySprite.overlapsWith(Enemy3)) {
+        if (controller.A.isPressed()) {
+            Enemy3.destroy(effects.spray, 500)
+        }
+    }
+    if (mySprite.overlapsWith(Enemy4)) {
+        if (controller.A.isPressed()) {
+            Enemy4.destroy(effects.spray, 500)
+        }
+    }
+    if (mySprite.overlapsWith(Enemy5)) {
+        if (controller.A.isPressed()) {
+            Enemy5.destroy(effects.spray, 500)
+        }
+    }
+    if (mySprite.overlapsWith(Enemy6)) {
+        if (controller.A.isPressed()) {
+            Enemy6.destroy(effects.spray, 500)
+        }
+    }
+    if (mySprite.overlapsWith(Enemy7)) {
+        if (controller.A.isPressed()) {
+            Enemy7.destroy(effects.spray, 500)
+        }
     }
 })
